@@ -1,0 +1,97 @@
+Namespace(batch_size=1, bias_scale_param=0.1, clip=None, debug=0, dropout=0.0, embedding_file='/home/michele/Documents/aflt/aflt_project/test/data/glove.840B.300d.txt', eps_scale=None, gpu=False, hidden_dim=100, input_model=None, learning_rate=0.001, max_doc_len=-1, mlp_hidden_dim=100, model_save_dir='/home/michele/Documents/aflt/aflt_project/models_blabla/', no_eps=False, no_sl=False, num_iterations=250, num_mlp_layers=2, num_train_instances=None, patience=30, patterns='7-10_6-10_5-10_4-10_3-10_2-10', pre_computed_patterns=None, scheduler=False, seed=100, self_loop_scale=None, semiring='LogSpaceMaxTimesSemiring', shared_sl=0, td='/home/michele/Documents/aflt/aflt_project/data/train.data', tl='/home/michele/Documents/aflt/aflt_project/data/train.labels', use_rnn=False, vd='/home/michele/Documents/aflt/aflt_project/data/dev.data', vl='/home/michele/Documents/aflt/aflt_project/data/dev.labels', word_dropout=0)
+Dev vocab size: 4342
+Train vocab size: 947
+Reading /home/michele/Documents/aflt/aflt_project/test/data/glove.840B.300d.txt
+Done reading 4565 vectors of dimension 300
+training instances: 100
+num_classes: 2
+60 OrderedDict([(2, 10), (3, 10), (4, 10), (5, 10), (6, 10), (7, 10)])
+# params: 259502
+Training with model
+0 
+0.5091743119266054 
+1 
+0.4908256880733945 
+2 
+0.4908256880733945 
+3 
+0.4908256880733945 
+4 
+0.7293577981651376 
+5 
+0.658256880733945 
+6 
+0.5091743119266054 
+7 
+0.7178899082568807 
+8 
+0.694954128440367 
+9 
+0.7029816513761468 
+10 
+0.7305045871559633 
+11 
+0.7339449541284404 
+12 
+0.7339449541284404 
+13 
+0.7327981651376146 
+14 
+0.7201834862385321 
+15 
+0.7442660550458715 
+16 
+0.7339449541284404 
+17 
+0.7350917431192661 
+18 
+0.7339449541284404 
+19 
+0.7350917431192661 
+20 
+0.7465596330275229 
+21 
+0.7350917431192661 
+22 
+0.7362385321100917 
+23 
+0.7350917431192661 
+24 
+0.7362385321100917 
+25 
+0.7362385321100917 
+26 
+0.7350917431192661 
+27 
+0.7362385321100917 
+28 
+0.7373853211009175 
+29 
+0.7362385321100917 
+30 
+0.7362385321100917 
+31 
+0.7362385321100917 
+32 
+0.7373853211009175 
+33 
+0.7373853211009175 
+34 
+0.7385321100917431 
+35 
+0.7373853211009175 
+36 
+0.7488532110091743 
+37 
+0.7419724770642202 
+38 
+0.7396788990825688 
+39 
+0.7396788990825688 
+40 
+0.7396788990825688 
+41 
+0.7339449541284404 
+42 
+
+

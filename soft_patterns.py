@@ -587,8 +587,8 @@ def evaluate_accuracy(model, data, batch_size, gpu, debug=0):
         num_1s += predicted.count(1)
         correct += sum(1 for pred, gold in zip(predicted, gold) if pred == gold)
 
-    print("num predicted 1s:", num_1s)
-    print("num gold 1s:     ", sum(gold == 1 for _, gold in data))
+    # print("num predicted 1s:", num_1s)
+    # print("num gold 1s:     ", sum(gold == 1 for _, gold in data))
 
     return correct / n
 
@@ -639,7 +639,7 @@ def train(train_data,
 
     for it in range(num_iterations):
         np.random.shuffle(train_data)
-
+        print("{} ".format(it))
         loss = 0.0
         i = 0
         for batch in shuffled_chunked_sorted(train_data, batch_size):
@@ -649,8 +649,8 @@ def train(train_data,
                 train_batch(model, batch_obj, num_classes, gold, optimizer, loss_function, gpu, debug, dropout)
             )
 
-            if i % debug_print == (debug_print - 1):
-                print(".", end="", flush=True)
+            # if i % debug_print == (debug_print - 1):
+                # print(".", end="", flush=True)
             i += 1
 
         if writer is not None:
@@ -676,69 +676,74 @@ def train(train_data,
             gold = [x[1] for x in batch]
             dev_loss += torch.sum(compute_loss(model, batch_obj, num_classes, gold, loss_function, gpu, debug).data)
 
-            if i % debug_print == (debug_print - 1):
-                print(".", end="", flush=True)
+            # if i % debug_print == (debug_print - 1):
+            #     print(".", end="", flush=True)
 
             i += 1
 
         if writer is not None:
             writer.add_scalar("loss/loss_dev", dev_loss, it)
-        print("\n")
+        # print("\n")
 
         finish_iter_time = monotonic()
         train_acc = evaluate_accuracy(model, train_data[:1000], batch_size, gpu)
         dev_acc = evaluate_accuracy(model, dev_data, batch_size, gpu)
 
-        print(
-            "iteration: {:>7,} train time: {:>9,.3f}m, eval time: {:>9,.3f}m "
-            "train loss: {:>12,.3f} train_acc: {:>8,.3f}% "
-            "dev loss: {:>12,.3f} dev_acc: {:>8,.3f}%".format(
-                it,
-                (finish_iter_time - start_time) / 60,
-                (monotonic() - finish_iter_time) / 60,
-                loss / len(train_data),
-                train_acc * 100,
-                dev_loss / len(dev_data),
-                dev_acc * 100
-            )
-        )
+        # print(
+        #     "iteration: {:>7,} train time: {:>9,.3f}m, eval time: {:>9,.3f}m "
+        #     "train loss: {:>12,.3f} train_acc: {:>8,.3f}% "
+        #     "dev loss: {:>12,.3f} dev_acc: {:>8,.3f}%".format(
+        #         it,
+        #         (finish_iter_time - start_time) / 60,
+        #         (monotonic() - finish_iter_time) / 60,
+        #         loss / len(train_data),
+        #         train_acc * 100,
+        #         dev_loss / len(dev_data),
+        #         dev_acc * 100
+        #     )
+        # )
 
         # Add rounding here because we don't actually care about such tiny improvements in accuracy, 
         # we'd rather stop earlier
         if round(dev_loss, 5) < round(best_dev_loss, 5):
             if round(dev_acc, 5) > round(best_dev_acc, 5):
                 best_dev_acc = dev_acc
-                print("New best acc!")
-            print("New best dev!")
+                # print("New best acc!")
+            # print("New best dev!")
             best_dev_loss = dev_loss
             best_dev_loss_index = 0
             if model_save_dir is not None:
                 model_save_file = os.path.join(model_save_dir, "{}_{}.pth".format(model_file_prefix, it))
-                print("saving model to", model_save_file)
+                # print("saving model to", model_save_file)
                 torch.save(model.state_dict(), model_save_file)
 
         else:
             best_dev_loss_index += 1
             if best_dev_loss_index == patience:
-                print("Reached", patience, "iterations without improving dev loss. Breaking")
+                # print("Reached", patience, "iterations without improving dev loss. Breaking")
                 break
 
         if round(dev_acc, 5) > round(best_dev_acc, 5):
             best_dev_acc = dev_acc
-            print("New best acc!")
+            # print("New best acc!")
             if model_save_dir is not None:
                 model_save_file = os.path.join(model_save_dir, "{}_{}.pth".format(model_file_prefix, it))
-                print("saving model to", model_save_file)
+                # print("saving model to", model_save_file)
                 torch.save(model.state_dict(), model_save_file)      
 
         if run_scheduler:
             scheduler.step(dev_loss)
 
+        print("{} ".format(dev_acc), end=' ')
+
+        
+
+    print("\n")
     return model
 
 
 def main(args):
-    print(args)
+    # print(args)
 
     pattern_specs = OrderedDict(sorted(([int(y) for y in x.split("-")] for x in args.patterns.split("_")),
                                 key=lambda t: t[0]))
@@ -758,9 +763,9 @@ def main(args):
         np.random.seed(args.seed)
 
     dev_vocab = vocab_from_text(args.vd)
-    print("Dev vocab size:", len(dev_vocab))
+    # print("Dev vocab size:", len(dev_vocab))
     train_vocab = vocab_from_text(args.td)
-    print("Train vocab size:", len(train_vocab))
+    # print("Train vocab size:", len(train_vocab))
     dev_vocab |= train_vocab
 
     vocab, embeddings, word_dim = \
@@ -778,7 +783,7 @@ def main(args):
     train_input, _ = read_docs(args.td, vocab, num_padding_tokens=num_padding_tokens)
     train_labels = read_labels(args.tl)
 
-    print("training instances:", len(train_input))
+    # print("training instances:", len(train_input))
 
     num_classes = len(set(train_labels))
 
@@ -786,7 +791,7 @@ def main(args):
     train_data = list(zip(train_input, train_labels))
     np.random.shuffle(train_data)
 
-    print("num_classes:", num_classes)
+    # print("num_classes:", num_classes)
 
     if n is not None:
         train_data = train_data[:n]
@@ -809,6 +814,8 @@ def main(args):
         'ViterbiSemiring': ViterbiSemiring,
         'MinPlusSemiring': MinPlusSemiring
     }[args.semiring]
+
+    print(semiring)
 
     model = SoftPatternClassifier(pattern_specs,
                                   mlp_hidden_dim,
@@ -843,7 +850,7 @@ def main(args):
         if not os.path.exists(model_save_dir):
             os.makedirs(model_save_dir)
 
-    print("Training with", model_file_prefix)
+    # print("Training with", model_file_prefix)
 
     train(train_data,
           dev_data,
