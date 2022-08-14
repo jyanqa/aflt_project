@@ -47,10 +47,14 @@ python3.6 ./soft_patterns_test.py \
 
 ### Plots
 To reproduce the numbers on the plots in our project writeup, run the corresponding .sh file in the ```plots``` folder.
+
 For the tables, add the appropriate flags in ```train.sh``` and ```test.sh```. The flags are:
   -b <batch size> 
+  
   --no_eps            for deactivating epsilon transitions
+  
   --no_sl             Don't use self loops
+  
   --shared_sl         Share main path and self loop parameters, where self loops are discounted by a self_loop_parameter. 0 is default. 1 is one scalar parameter per state per pattern. 2 is one single global parameter
 
 To change the number of diagonals, one has to change manually the self.num_diags parameter on lines 234 and 259. The defaults are 1 at line 234 and 2 at line 259. To increase the number of diagonals by k, one should change the values to 1+k and 2+k .
