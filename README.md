@@ -17,20 +17,6 @@ We conclude valuable insights regarding how parameters affect the model performa
 - Third, the log-space max-times semiring achieves the best accuracy. 
 - Finally, training the patterns on multiple documents improves the gradient com- putation and hence the convergence rate.
 
-```
-
-### References
-If you make use if this code, please cite the following paper:
-
-```bash
-
-@inproceedings{Schwartz:2018,
-  author={Schwartz, Roy and Thomson, Sam and Smith, Noah A.},
-  title={{SoPa}: Bridging {CNNs}, {RNNs}, and Weighted Finite-State Machines},
-  booktitle={Proc. of ACL},
-  year={2018}
-}
-```
 
 ## Contact
 
