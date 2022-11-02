@@ -1,6 +1,6 @@
 # Exploring the SoPa Model
 
-The project aims to explore the SoPa model (Schwartz et al., 2018), which is characterized by the patterns matching mechanism. 
+The project aims to explore the \href{https://arxiv.org/pdf/1805.06061.pdf}{SoPa} model (Schwartz et al., 2018), which is characterized by the patterns matching mechanism. 
 
 ### Dataset
 As in the SoPa experiment, 100 movie reviews from SST dataset with binary labels are also used in our ablation study. 
