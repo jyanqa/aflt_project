@@ -10,7 +10,7 @@ As in the SoPa experiment, 100 movie reviews from SST dataset with binary labels
 ### Approaches
 We executed the study on three levels, including automaton level, automata level, as well as on the SoPa as a whole. For reproducility, please refer to README_ reproducible_code.md file.
 
-### Result
+### Findings
 We conclude valuable insights regarding how parameters affect the model performance through multiple experiments. 
 
 - First, increasing patterns’ width improves model performance while the length has little effect. Second, in case exclud- ing ε-transitions, the bigger max-steps-forward is, the better performance is yielded. 
