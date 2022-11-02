@@ -1,6 +1,8 @@
 # Exploring the SoPa Model
 
-The project aims to explore the \href{https://arxiv.org/pdf/1805.06061.pdf}{SoPa} model (Schwartz et al., 2018), which is characterized by the patterns matching mechanism. 
+*A course project for [Advanced Formal Language Theory, Spring 2022](https://rycolab.io/classes/aflt-s22/) at ETH Zurich.*
+
+The project aims to explore the SoPa model, based on ["SoPa: Bridging CNNs, RNNs, and Weighted Finite-State Machines"](https://arxiv.org/abs/1805.06061) by Roy Schwartz, Sam Thomson and Noah A. Smith, ACL 2018, which is characterized by the patterns matching mechanism. 
 
 ### Dataset
 As in the SoPa experiment, 100 movie reviews from SST dataset with binary labels are also used in our ablation study. 
@@ -21,3 +23,5 @@ We conclude valuable insights regarding how parameters affect the model performa
 ## Contact
 
 For questions, comments or feedback, please email quynguyen@ethz.ch
+
+[Code](https://github.com/jyanqa/aflt_project/blob/master/README_%20reproducible_code.md) | [Report](https://github.com/jyanqa/aflt_project/blob/master/report_final.pdf)
