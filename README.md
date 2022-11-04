@@ -1,6 +1,6 @@
 # Exploring the SoPa Model
 
-*A course project for [Advanced Formal Language Theory, Spring 2022](https://rycolab.io/classes/aflt-s22/) at ETH Zurich.*
+*A course project for [Advanced Formal Language Theory class, Spring 2022](https://rycolab.io/classes/aflt-s22/) at ETH Zurich.*
 
 The project aims to explore the SoPa model, based on ["SoPa: Bridging CNNs, RNNs, and Weighted Finite-State Machines"](https://arxiv.org/abs/1805.06061) by Roy Schwartz, Sam Thomson and Noah A. Smith, ACL 2018, which is characterized by the patterns matching mechanism. 
 
